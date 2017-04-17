@@ -1,0 +1,11 @@
+{
+    "defaultSeverity": "error",
+    "extends": ["tslint:all", "tslint-react"],
+    "jsRules": {
+        "jsx-no-lambda": true
+    },
+    "rules": {
+        "no-import-side-effect": [true, { "ignore-module": "(\\.html|\\.css)$" }]
+    },
+    "rulesDirectory": []
+}
