@@ -1,11 +1,19 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { browserHistory } from "react-router";
-import * as ReactRouterRedux from "react-router-redux";
+import { Provider } from "react-redux";
+import * as Redux from "redux";
 import { Root } from "./containers/Root";
+import { configureStore, IApplicationState } from "./store";
+
+const initialState: IApplicationState = {
+    users: [],
+};
+const store: Redux.Store<IApplicationState> = configureStore(initialState);
 
 ReactDOM.render(
-    <Root />,
+    <Provider store={store}>
+        <Root />
+    </Provider>,
     document.getElementById("react-app"),
 );
 

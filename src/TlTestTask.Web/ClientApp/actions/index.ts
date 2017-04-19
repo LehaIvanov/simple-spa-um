@@ -1,38 +1,22 @@
-import { CALL_API } from "../middleware/api";
+import * as Redux from "redux";
+import * as dataSourceUser from "../data/user";
+import { IUser } from "../models";
+import { IApplicationState } from "../store";
+import * as constants from "./constants";
+import { IAction } from "./IAction";
 
-/* tslint:disable:no-inferrable-types */
-export const USERS_REQUEST: string = "USERS_REQUEST";
-export const USERS_SUCCESS: string = "USERS_SUCCESS";
-export const USERS_FAILURE: string = "USERS_FAILURE";
-/* tslint:enable:no-inferrable-types */
+export const getUsers: () => (dispatch: Redux.Dispatch<IApplicationState>) => Promise<void> =
+    (): (dispatch: Redux.Dispatch<IApplicationState>) => Promise<void> =>
+        (dispatch: Redux.Dispatch<IApplicationState>): Promise<void> => {
+            dispatch({
+                payload: [],
+                type: constants.GET_USERS_REQUEST,
+            });
 
-
-// Fetches a page of Users for a particular repo.
-// Relies on the custom API middleware defined in ../middleware/api.js.
-/*
-const fetchUsers = (fullName, nextPageUrl) => ({
-  fullName,
-  [CALL_API]: {
-    types: [ USERS_REQUEST, USERS_SUCCESS, USERS_FAILURE ],
-    endpoint: nextPageUrl,
-  }
-})
-*/
-
-// Fetches a page of Users for a particular repo.
-// Bails out if page is cached and user didn't specifically request next page.
-// Relies on Redux Thunk middleware.
-/*
-export const loadUsers = (fullName, nextPage) => (dispatch, getState) => {
-  const {
-    nextPageUrl = `repos/${fullName}/Users`,
-    pageCount = 0
-  } = getState().pagination.UsersByRepo[fullName] || {}
-
-  if (pageCount > 0 && !nextPage) {
-    return null
-  }
-
-  return dispatch(fetchUsers(fullName, nextPageUrl))
-}
-*/
+            return dataSourceUser.getAll().then((data: IUser[]): void => {
+                dispatch({
+                    payload: data,
+                    type: constants.GET_USERS_SUCCESS,
+                });
+            });
+        };
