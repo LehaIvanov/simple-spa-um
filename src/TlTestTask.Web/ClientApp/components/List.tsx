@@ -1,9 +1,10 @@
 import * as React from "react";
 import { IUser } from "../models";
 import { IApplicationState } from "../store";
+import { IUserState } from "../store";
 
 interface IList {
-    users: IUser[];
+    user: IUserState;
     getUsers(): (dispatch: Redux.Dispatch<IApplicationState>) => Promise<void>;
 }
 
@@ -13,7 +14,7 @@ export class List extends React.Component<IList, any> {
         return (
             <div>
                 <ul>
-                    { this.props.users.map((user: IUser) => <li>{`${user.firstName} ${user.lastName}`}</li>) }
+                    { this.props.user.list.map((user: IUser) => <li>{`${user.firstName} ${user.lastName}`}</li>) }
                 </ul>
             </div>
         );

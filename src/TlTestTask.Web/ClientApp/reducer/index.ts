@@ -1,7 +1,7 @@
 import { IApplicationState } from "ClientApp/store";
 import * as Redux from "redux";
-import { userReduce } from "./users";
+import { user } from "./user";
 
 export const rootReducer: Redux.Reducer<IApplicationState> = Redux.combineReducers<IApplicationState>({
-    userReduce,
+    user,
 });

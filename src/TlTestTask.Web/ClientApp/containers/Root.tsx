@@ -4,28 +4,26 @@ import * as Redux from "redux";
 import * as pageActions from "../actions";
 import { List } from "../components/List";
 import { IUser } from "../models";
-import { IApplicationState } from "../store";
+import { IApplicationState, IUserState } from "../store";
 
 // tslint:disable-next-line:no-any
 class App  extends React.Component<any, any> {
     public render(): JSX.Element {
-        const users: IUser[] = this.props.users || [];
+        const { user } = this.props;
         const { getUsers } = this.props.pageActions;
 
         return (
             <div>
                 <h1>List of users</h1>
-                <List users={users} getUsers={getUsers} />
+                <List user={user} getUsers={getUsers} />
             </div>
         );
     }
 }
 
-// tslint:disable-next-line:no-any
-const mapStateToProps: (state: any) => any =
-    // tslint:disable-next-line:no-any
-    (state: any): any => ({
-        users: state.userReduce.users,
+const mapStateToProps: (state: IApplicationState) => IApplicationState =
+    (state: IApplicationState): IApplicationState => ({
+        user: state.user,
     });
 
 // tslint:disable-next-line:no-any

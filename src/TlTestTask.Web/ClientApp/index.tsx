@@ -6,7 +6,9 @@ import { Root } from "./containers/Root";
 import { configureStore, IApplicationState } from "./store";
 
 const initialState: IApplicationState = {
-    users: [],
+    user: {
+        list: [],
+    },
 };
 const store: Redux.Store<IApplicationState> = configureStore(initialState);
 
