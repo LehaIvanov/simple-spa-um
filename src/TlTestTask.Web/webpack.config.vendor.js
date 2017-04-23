@@ -4,7 +4,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = (env) => {
     const extractCSS = new ExtractTextPlugin('vendor.css');
-    const isDevBuild = !(env && env.prod);
+    const isDevBuild = true;//!(env && env.prod);
     return [{
         stats: { modules: false },
         resolve: {
@@ -18,7 +18,7 @@ module.exports = (env) => {
         },
         entry: {
             vendor: [
-                'bootstrap',
+                //'bootstrap',
                 'bootstrap/dist/css/bootstrap.css',
                 'event-source-polyfill',
                 'isomorphic-fetch',
@@ -30,7 +30,7 @@ module.exports = (env) => {
                 'redux-thunk',
                 'react-router-redux',
                 'jquery',
-
+                'material-ui',
             ],
         },
         output: {

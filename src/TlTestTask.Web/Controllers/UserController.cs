@@ -47,7 +47,7 @@ namespace TlTestTask.Web.Controllers
             return CreatedAtRoute("GetUser", new { id = item.Id }, item);
         }
 
-        [HttpPut("{id}")]
+        [HttpPatch("{id}")]
         public IActionResult Update(int id, [FromBody] User item)
         {
             if (item == null || item.Id != id)

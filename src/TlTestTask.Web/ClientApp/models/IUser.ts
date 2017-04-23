@@ -1,7 +1,9 @@
+import { Gender } from "./Gender";
+
 export interface IUser {
     birthDate?: Date;
     firstName: string;
-    gender: number;
-    id: number;
+    gender: Gender;
+    id?: number;
     lastName: string;
 }
