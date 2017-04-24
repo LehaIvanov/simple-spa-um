@@ -20,13 +20,26 @@ export const user: (state: IUserState, action: IAction) => IUserState =
                     list: action.payload,
                 };
             }
-            case constants.CREAT_USER_REQUEST: {
-                return { ...state };
-            }
-            case constants.CREAT_USER_SUCCESS: {
+            case constants.SAVE_USER_REQUEST:
+            case constants.SAVE_USER_SUCCESS: {
                 return {
                     ...state,
                     user: action.payload,
+                };
+            }
+            case constants.GET_USER_REQUEST: {
+                return { ...state };
+            }
+            case constants.GET_USER_SUCCESS: {
+                return {
+                    ...state,
+                    user: action.payload,
+                };
+            }
+            case constants.DELETE_USER_SUCCESS: {
+                return {
+                    ...state,
+                    list: state.list.filter((u: IUser) => u.id !== action.payload),
                 };
             }
             default: {

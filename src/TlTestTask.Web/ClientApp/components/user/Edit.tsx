@@ -4,26 +4,32 @@ import { Gender, IUser } from "../../models";
 import { Form } from "./Form";
 import { IUserProps } from "./propsInterfaces";
 
-export class New extends React.Component<IUserProps, IUser> {
-    public constructor(props: IUserProps) {
+interface IParamsEditRoute {
+    id: number;
+}
+
+interface IEditProps extends IUserProps {
+    params: IParamsEditRoute;
+}
+
+export class Edit extends React.Component<IEditProps, IUser> {
+    public constructor(props: IEditProps) {
         super(props);
         this.handleSaveUser = this.handleSaveUser.bind(this);
     }
 
     public render(): JSX.Element {
-        const initialUser: IUser = {
-            firstName: "",
-            gender: Gender.Unknown,
-            lastName: "",
-        };
-
         return (
             <div>
-                <h2>New user</h2>
+                <h2>Edit user</h2>
                 <Link to={"/users"}>Back</Link>
-                <Form user={initialUser} handleSaveUser={this.handleSaveUser} />
+                <Form user={this.props.userState.user} handleSaveUser={this.handleSaveUser} />
             </div>
         );
+    }
+
+    private componentDidMount(): void {
+        this.props.userActions.getUser(this.props.params.id);
     }
 
     private handleSaveUser(user: IUser): void {

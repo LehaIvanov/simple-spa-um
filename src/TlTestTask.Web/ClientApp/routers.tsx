@@ -12,7 +12,7 @@ export const routes: JSX.Element = (
             <IndexRoute component={User.List} />
             <Route path="new" component={User.New} />
             <Route path=":id" component={User.Show} />
-            {/*<Route path=":id/edit" component={Users.Edit} />*/}
+            <Route path=":id/edit" component={User.Edit} />
         </Route>
     </Route>
 );

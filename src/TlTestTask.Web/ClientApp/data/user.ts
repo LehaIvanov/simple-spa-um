@@ -21,16 +21,25 @@ export const add: (user: IUser) => Promise<IUser> = (user: IUser): Promise<IUser
     return fetch(apiPrefix, reqInit).then((res: Response) => res.json() as Promise<IUser>);
 };
 
-/*
-export const update: (user: IUser) => Promise<void> = (user: IUser): Promise<void> => {
+export const update: (user: IUser) => Promise<Response> = (user: IUser): Promise<Response> => {
     const reqInit: RequestInit = {
         body: JSON.stringify(user),
         headers: {
             "Content-Type": "application/json",
         },
-        method: "POST",
+        method: "PATCH",
     } as RequestInit;
 
-    return fetch(apiPrefix, reqInit).then((res: Response) => res);
+    return fetch(`${apiPrefix}/${user.id}`, reqInit);
 };
-*/
+
+export const deleteUser: (id: number) => Promise<Response> = (id: number): Promise<Response> => {
+    const reqInit: RequestInit = {
+        headers: {
+            "Content-Type": "application/json",
+        },
+        method: "DELETE",
+    } as RequestInit;
+
+    return fetch(`${apiPrefix}/${id}`, reqInit);
+};
