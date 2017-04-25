@@ -19,7 +19,6 @@ class UsersContainerComponent extends React.Component<IUserProps, {}> {
 
         return (
             <div>
-                <h1>User Management System</h1>
                 {childrenWithProps}
             </div>
         );
@@ -41,33 +40,3 @@ const mapDispatchToProps: (dispatch: Redux.Dispatch<IActionsUser>) => IUserActio
 // tslint:disable-next-line:variable-name
 export const UsersContainer: ReactRedux.ComponentClass<{}> =
     ReactRedux.connect(mapStateToProps, mapDispatchToProps)(UsersContainerComponent);
-
-/*interface IUsersProps extends IUserState, ActionsUser.IActionsUser {
-}*/
-/*
-interface IStatesContainer {
-    states: IApplicationState;
-}
-
-interface IActionsContainer {
-    actions: ActionsUser.IActionsUser;
-}
-*/
-/* interface IUsersProps extends IStatesContainer, IActionsContainer, { children?: ReactNode; } */
-
-/*
-class App  extends React.Component<any, any> {
-    public render(): JSX.Element {
-        const { user } = this.props;
-        const { getUsers } = this.props.pageActions;
-
-        return (
-            <div>
-                <h1>List of users</h1>
-                <UsersComponents.List user={user} getUsers={getUsers} />
-            </div>
-            {this.props.children}
-        );
-    }
-}
-*/

@@ -36,6 +36,7 @@ export const saveUser: (user: IUser) => (dispatch: Redux.Dispatch<IApplicationSt
                         payload: user,
                         type: constants.SAVE_USER_SUCCESS,
                     });
+                    browserHistory.push(`/users/${user.id}`);
                 });
             }
 

@@ -1,3 +1,4 @@
+import { AppBar } from "material-ui";
 import * as React from "react";
 import { Link } from "react-router";
 import { Gender, IUser } from "../../models";
@@ -12,6 +13,7 @@ export class New extends React.Component<IUserProps, IUser> {
 
     public render(): JSX.Element {
         const initialUser: IUser = {
+            birthDate: new Date(),
             firstName: "",
             gender: Gender.Unknown,
             lastName: "",
@@ -19,8 +21,7 @@ export class New extends React.Component<IUserProps, IUser> {
 
         return (
             <div>
-                <h2>New user</h2>
-                <Link to={"/users"}>Back</Link>
+                <AppBar title="New user" showMenuIconButton={false} />
                 <Form user={initialUser} handleSaveUser={this.handleSaveUser} />
             </div>
         );

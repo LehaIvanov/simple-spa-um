@@ -4,10 +4,14 @@ import { IUser } from "../models";
 const apiPrefix: string = "/api/user";
 
 export const getAll: () => Promise<IUser[]> = (): Promise<IUser[]> =>
-    fetch(apiPrefix).then((res: Response) => res.json() as Promise<IUser[]>);
+    fetch(apiPrefix)
+        .then((res: Response) => res.json() as Promise<IUser[]>)
+        .then((list: IUser[]) => list.map((u: IUser) => ({ ...u, birthDate: new Date(u.birthDate) })));
 
 export const get: (id: number) => Promise<IUser> = (id: number): Promise<IUser> =>
-    fetch(`${apiPrefix}/${id}`).then((res: Response) => res.json() as Promise<IUser>);
+    fetch(`${apiPrefix}/${id}`)
+        .then((res: Response) => res.json() as Promise<IUser>)
+        .then((user: IUser) => ({ ...user, birthDate: new Date(user.birthDate) }));
 
 export const add: (user: IUser) => Promise<IUser> = (user: IUser): Promise<IUser> => {
     const reqInit: RequestInit = {

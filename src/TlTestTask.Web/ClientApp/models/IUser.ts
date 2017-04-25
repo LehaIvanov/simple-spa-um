@@ -1,7 +1,7 @@
 import { Gender } from "./Gender";
 
 export interface IUser {
-    birthDate?: Date;
+    birthDate: Date;
     firstName: string;
     gender: Gender;
     id?: number;

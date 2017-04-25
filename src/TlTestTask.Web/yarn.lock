@@ -10,6 +10,19 @@
   version "0.0.33"
   resolved "https://registry.yarnpkg.com/@types/isomorphic-fetch/-/isomorphic-fetch-0.0.33.tgz#3ea1b86f8b73e6a7430d01d4dbd5b1f63fd72718"
 
+"@types/material-ui@^0.17.2":
+  version "0.17.2"
+  resolved "https://registry.yarnpkg.com/@types/material-ui/-/material-ui-0.17.2.tgz#6d35aec8d2e506fdea162011b34b7217a9d416c8"
+  dependencies:
+    "@types/react" "*"
+    "@types/react-addons-linked-state-mixin" "*"
+
+"@types/react-addons-linked-state-mixin@*":
+  version "0.14.17"
+  resolved "https://registry.yarnpkg.com/@types/react-addons-linked-state-mixin/-/react-addons-linked-state-mixin-0.14.17.tgz#2e82b5b0882410279a7ab6b675e6f49eb3de8419"
+  dependencies:
+    "@types/react" "*"
+
 "@types/react-dom@^0.14.17":
   version "0.14.23"
   resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-0.14.23.tgz#cecfcfad754b4c2765fe5d29b81b301889ad6c2e"

@@ -36,6 +36,7 @@
   },
   "dependencies": {
     "@types/isomorphic-fetch": "^0.0.33",
+    "@types/material-ui": "^0.17.2",
     "@types/react-redux": "^4.4.29",
     "@types/react-router-redux": "4.0.30",
     "@types/redux": "3.5.27",

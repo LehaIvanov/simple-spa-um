@@ -17,14 +17,3 @@ export const Root: ({store, history}: IRootArg) => JSX.Element = ({ store, histo
         <Router history={history} routes={routes} />
     </Provider>
 );
-
-// tslint:disable-next-line:no-any
-/*
-export class Root  extends React.Component<any, any> {
-    public render(): JSX.Element {
-        return (
-            <UsersContainer />
-        );
-    }
-}
-*/

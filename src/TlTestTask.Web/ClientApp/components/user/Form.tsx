@@ -1,5 +1,6 @@
-import { MenuItem, RaisedButton, SelectField, TextField } from "material-ui";
+import { DatePicker, FlatButton, MenuItem, RaisedButton, SelectField, TextField, TouchTapEvent } from "material-ui";
 import * as React from "react";
+import { browserHistory } from "react-router";
 import { Gender, IUser } from "../../models";
 
 interface IFormProps {
@@ -7,18 +8,25 @@ interface IFormProps {
     handleSaveUser(user: IUser): void;
 }
 
+const handleGoToUserListBtnClick: () => void = (): void  => {
+    browserHistory.push("/users");
+};
+
 export class Form extends React.Component<IFormProps, IUser> {
     public constructor(props: IFormProps) {
         super(props);
-        this.state = { ...this.props.user };
+        this.state = {
+            ...this.props.user,
+        };
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleGenderChange = this.handleGenderChange.bind(this);
         this.handleSaveUser = this.handleSaveUser.bind(this);
+        this.handleChangeBirthDate = this.handleChangeBirthDate.bind(this);
     }
 
     public render(): JSX.Element {
         return (
-            <form>
+            <div>
                 <TextField
                     name="firstName"
                     hintText="First Name"
@@ -36,8 +44,14 @@ export class Form extends React.Component<IFormProps, IUser> {
                         <MenuItem value={Gender.Male} primaryText="Male" />
                         <MenuItem value={Gender.Female} primaryText="Female" />
                 </SelectField><br />
+                <DatePicker
+                    autoOk={true}
+                    hintText="Birth date"
+                    value={this.state.birthDate}
+                    onChange={this.handleChangeBirthDate} /><br />
                 <RaisedButton label="Save" secondary={true} onTouchTap={this.handleSaveUser} />
-            </form>
+                <FlatButton label="Go to user list" onTouchTap={handleGoToUserListBtnClick}/>
+            </div>
         );
     }
 
@@ -46,7 +60,14 @@ export class Form extends React.Component<IFormProps, IUser> {
         this.setState({ ...user });
     }
 
-    private handleGenderChange(event: React.FormEvent<HTMLSelectElement>, index: number, value: Gender): void {
+    private handleChangeBirthDate(event: TouchTapEvent, value: Date): void {
+        this.setState({
+            ...this.state,
+            birthDate: value,
+        });
+    }
+
+    private handleGenderChange(event: TouchTapEvent, index: number, value: Gender): void {
         event.persist();
         this.setState({
             ...this.state,

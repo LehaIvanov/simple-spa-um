@@ -11,9 +11,10 @@ export interface IUserActionsProps {
 
 export interface IUserProps extends IUserActionsProps, IUserStatesProps {}
 
-/*
-export interface IUsersProps {
-    user: IUserState;
-    getUsers(): (dispatch: Redux.Dispatch<IApplicationState>) => Promise<void>;
+interface IParamsGetByIdRoute {
+    id: number;
 }
-*/
+
+export interface IUserGetByIdProps extends IUserProps {
+    params: IParamsGetByIdRoute;
+}

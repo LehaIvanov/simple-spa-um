@@ -1,19 +1,12 @@
+import { AppBar } from "material-ui";
 import * as React from "react";
 import { Link } from "react-router";
 import { Gender, IUser } from "../../models";
 import { Form } from "./Form";
-import { IUserProps } from "./propsInterfaces";
+import { IUserGetByIdProps } from "./propsInterfaces";
 
-interface IParamsEditRoute {
-    id: number;
-}
-
-interface IEditProps extends IUserProps {
-    params: IParamsEditRoute;
-}
-
-export class Edit extends React.Component<IEditProps, IUser> {
-    public constructor(props: IEditProps) {
+export class Edit extends React.Component<IUserGetByIdProps, IUser> {
+    public constructor(props: IUserGetByIdProps) {
         super(props);
         this.handleSaveUser = this.handleSaveUser.bind(this);
     }
@@ -21,8 +14,7 @@ export class Edit extends React.Component<IEditProps, IUser> {
     public render(): JSX.Element {
         return (
             <div>
-                <h2>Edit user</h2>
-                <Link to={"/users"}>Back</Link>
+                <AppBar title="Edit user" showMenuIconButton={false} />
                 <Form user={this.props.userState.user} handleSaveUser={this.handleSaveUser} />
             </div>
         );
