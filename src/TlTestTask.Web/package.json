@@ -2,7 +2,11 @@
   "name": "tl_test_task",
   "version": "0.0.0",
   "scripts": {
-    "tslint": "tslint ClientApp/**/*.ts{,x}"
+    "tslint": "tslint ClientApp/**/*.ts{,x}",
+    "start": "dotnet run",
+    "build": "dotnet restore && dotnet build",
+    "update-database": "dotnet ef database update",
+    "first-start": "npm install && npm run build && npm run update-database && npm run start"
   },
   "devDependencies": {
     "@types/history": "^2.0.39",
