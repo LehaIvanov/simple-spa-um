@@ -2,24 +2,8 @@
 
 ### Usage
 
-Enter in the project folder
+For the first run application:
 ```
 cd src/TlTestTask.Web
-```
-Install dependencies
-```
-yarn
-```
-Build project
-```
-dotnet restore
-dotnet build
-```
-Apply migrations
-```
-dotnet ef database update
-```
-Run project
-```
-dotnet run
+npm run first-start
 ```
