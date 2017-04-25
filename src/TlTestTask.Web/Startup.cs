@@ -64,9 +64,13 @@ namespace TlTestTask.Web
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
 
+                routes.MapRoute(
+                    name: "users",
+                    template: "{controller=Users}/{action=Index}/{id?}");
+
                 routes.MapSpaFallbackRoute(
-                    name: "spa-fallback",
-                    defaults: new { controller = "Home", action = "Index" });
+                    name: "user",
+                    defaults: new { controller = "Users", action = "Index" });
             });
         }
     }

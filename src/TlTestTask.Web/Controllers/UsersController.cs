@@ -6,14 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace TlTestTask.Web.Controllers
 {
-    public class HomeController : Controller
+    public class UsersController : Controller
     {
         public IActionResult Index()
-        {
-            return RedirectToAction("Index", "Users");
-        }
-
-        public IActionResult Error()
         {
             return View();
         }
